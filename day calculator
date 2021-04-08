@@ -1,0 +1,60 @@
+date=int(input("enter date"))
+
+month=int(input("enter month in number"))
+
+y=int(input("please enter year"))
+
+z=1996
+
+x=0
+for k in range (z,y+1):
+    if k%4==0:
+        x=x+2
+    else:
+        x=x+1
+
+if y%4==0:
+    x=x-1
+
+x=x%7
+
+if y%4==0:
+    e=0
+    for j in range (2,month+1):
+        if j==2 or j==4 or j==6 or j==8 or j==9 or j==11:
+            e=e+31
+        elif j==3:
+            e=e+29
+        else:
+            e=e+3
+    e=e+date
+
+else:
+    e=0
+    for j in range (2,month+1):
+        if j==2 or j==4 or j==6 or j==8 or j==9 or j==11:
+            e=e+31
+        elif j==3:
+            e=e+28
+        else:
+            e=e+3
+    e=e+date
+
+a=e
+
+l1=["sunday","monday","tuesday","wednesday","thurday","friday","saturday"]
+
+b=l1[x]
+
+for i in range (0,len(l1)+1) :
+    if b==l1[i] :
+        c=i
+        d=a%7
+        if c>=5 :
+            print(l1[d+i-8])
+        elif d>=5 :
+            print(l1[d+i-8])
+        else:
+            print(l1[d+i-1])
+        break
+    
