@@ -26,7 +26,7 @@ if y%4==0:
         elif j==3:
             e=e+29
         else:
-            e=e+3
+            e=e+30
     e=e+date
 
 else:
@@ -37,7 +37,7 @@ else:
         elif j==3:
             e=e+28
         else:
-            e=e+3
+            e=e+30
     e=e+date
 
 a=e
