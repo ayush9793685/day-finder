@@ -1,0 +1,122 @@
+from tkinter import *
+from tkinter import messagebox
+
+def sub():
+    messagebox.showinfo("information title",txt_nm.get())
+
+topframe=Tk() #bydefault
+
+topframe.geometry('400x400') #width x height
+topframe.title('Sample Frame')
+topframe.configure(bg="light blue")
+
+l_name=Label(topframe,text="Enter date",width=20)
+
+l_name.place(x=10,y=10)
+
+date=Entry(topframe)
+
+date.place(x=200,y=10)
+
+l_name1=Label(topframe,text="Enter month",width=20)
+
+l_name1.place(x=10,y=50)
+
+month=Entry(topframe)
+
+month.place(x=200,y=50)
+
+l_name2=Label(topframe,text="Enter year",width=20)
+
+l_name2.place(x=10,y=90)
+
+y=Entry(topframe)
+
+y.place(x=200,y=90)
+
+
+def da(date,month,y):
+    z=1996
+    x=0
+    for k in range (z,y+1):
+        if k%4==0:
+            x=x+2
+        else:
+            x=x+1
+    
+    if y%4==0:
+        x=x-1
+
+    x=x%7
+    return x
+def day(date,month,y):
+    z=1996
+    x=0
+    for k in range (z,y+1):
+        if k%4==0:
+            x=x+2
+        else:
+            x=x+1
+    
+    if y%4==0:
+        x=x-1
+
+    x=x%7
+
+    if y%4==0:
+        e=0
+        for j in range (2,month+1):
+            if j==2 or j==4 or j==6 or j==8 or j==9 or j==11:
+                e=e+31
+            elif j==3:
+                e=e+29
+            else:
+                e=e+30
+        e=e+date
+        return e
+
+    else:
+        e=0
+        for j in range (2,month+1):
+            if j==2 or j==4 or j==6 or j==8 or j==9 or j==11:
+                e=e+31
+            elif j==3:
+                e=e+28
+            else:
+                e=e+30
+        e=e+date
+        return e
+def day2(x,e):
+    
+    a=e
+
+    l1=["sunday","monday","tuesday","wednesday","thurday","friday","saturday"]
+
+    b=l1[x]
+    
+    for i in range (0,len(l1)+1) :
+        if b==l1[i] :
+            c=i
+            d=a%7
+            if c>=5 :
+                return(l1[d+i-8])
+            elif d>=5 :
+                return(l1[d+i-8])
+            else:
+                return(l1[d+i-1])
+            break
+    
+
+def result():
+    x=da(int(date.get()),int(month.get()),int(y.get()))
+    e=day(int(date.get()),int(month.get()),int(y.get()))
+    print(x,e)
+
+    result=day2(x,e)
+    l_name3=Label(topframe,text="result is  "+str(result),width=30,bg='orange')
+    l_name3.place(x=100,y=200)
+
+submit= Button(topframe,text='result',width=15,command=result)
+submit.place(x=100,y=150)
+
+topframe.mainloop()
